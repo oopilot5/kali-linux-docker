@@ -8,4 +8,3 @@ docker exec -it kali bash
 vi /root/.bashrc 去掉注释
 
 service postgresql start
-service --status-all

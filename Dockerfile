@@ -1,7 +1,6 @@
 FROM kalilinux/kali-linux-docker:latest
 
-RUN apt-get update && apt-get install -y netcat nmap metasploit-framework openssh-server && \
-    echo '29' | apt-get install -y xorg
+RUN apt -y update && (apt -y full-upgrade || true) && (apt install -y kali-linux-all || true)
 
 RUN mkdir -p /var/run/sshd && \
     mkdir -p /root/.ssh && \
@@ -13,4 +12,7 @@ RUN mkdir -p /var/run/sshd && \
 
 ADD run.sh /home/run.sh
 RUN chmod +x /home/run.sh
+
+RUN apt install -y htop
+
 CMD ["/home/run.sh"]
