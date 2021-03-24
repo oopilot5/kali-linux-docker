@@ -14,5 +14,10 @@ ADD run.sh /home/run.sh
 RUN chmod +x /home/run.sh
 
 RUN apt install -y htop
+RUN sed -i "s/# alias/alias/g" /root/.bashrc && \
+    sed -i "s/# PS1/PS1/g" /root/.bashrc && \
+    sed -i "s/# umask/umask/g" /root/.bashrc && \
+    sed -i "s/# export/export/g" /root/.bashrc && \
+    sed -i "s/# eval/eval/g" /root/.bashrc
 
 CMD ["/home/run.sh"]
